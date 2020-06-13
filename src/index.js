@@ -1,42 +1,22 @@
-import { changeView } from './view-controler/router.js';
-
-const init = () => {
-  changeView(window.location.hash);
-  window.addEventListener('hashchange', () => {
-    changeView(window.location.hash);
-  });
+import { changeView } from './router.js';
+const firebaseConfig = {
+  apiKey: 'AIzaSyDeygw3xwQJVQiMVnznSDqq9nnn5EDW8_w',
+  authDomain: 'bunker-e836e.firebaseapp.com',
+  databaseURL: 'https://bunker-e836e.firebaseio.com',
+  projectId: 'bunker-e836e',
+  storageBucket: 'bunker-e836e.appspot.com',
+  messagingSenderId: '910029505675',
+  appId: '1:910029505675:web:429344be4dd11f0d69408e',
 };
-window.addEventListener('load', () => {
-  init();
-  setTimeout(() => {
-    const viewheight = window.visualViewport.height;
-    const viewwidth = window.visualViewport.width;
-    const viewport = document.querySelector('meta[name=viewport]');
-    viewport.setAttribute('content', `height=${viewheight}px, width=${viewwidth}px, initial-scale=1.0`);
-  }, 300);
-});
-auth.onAuthStateChanged((user) => {
-  if (user) {
-    window.location.hash = '#/home';
-    // if (user.emailVerified) {
-    //   window.location.hash = '#/home';
-    // } else {
-    //   window.location.hash = '#/login';
-    // }
-    if (user.metadata.creationTime === user.metadata.lastSignInTime) {
-      // eslint-disable-next-line consistent-return
-      db.collection('users').doc(user.uid).get().then((doc) => {
-        if (!doc.exists) {
-          return db.collection('users').doc(user.uid).set({
-            bio: '',
-            myLikes: {},
-            posts: {},
-          });
-        }
-      });
-    }
-  } else {
-    window.location.hash = '#/';
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+const storage = firebase.storage();
+const init = () => {
     changeView(window.location.hash);
-  }
-});
+    window.addEventListener('hashchange', () => {
+        changeView(window.location.hash)
+    });
+};
+
+window.addEventListener('load', init);

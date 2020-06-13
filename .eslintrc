@@ -10,10 +10,7 @@
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly",
-    "firebase": "readonly",
-    "auth": "readonly",
-    "storage": "readonly",
-    "db": "readonly"
+    "firebase": "readonly"
   },
   "plugins": ["jest"],
   "parserOptions": {
