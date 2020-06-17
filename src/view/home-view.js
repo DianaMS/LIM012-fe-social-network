@@ -31,7 +31,7 @@ export default () => {
       <div>
       <input id="upload-cover" type="file">
       <label class="camera-icon" for="upload-cover"><i class="fas fa-camera"></i></label>
-        <img class="cover-profile">
+        <img class="cover-profile" src="./images/default-cover.jpg">
         <img class="profile" src="./images/profile-img-woman.png">
       </div>
       <div class="profile-information">
@@ -96,12 +96,12 @@ export default () => {
       const profileH5 = div.querySelector('.profile-information h5');
       profileH3.innerHTML = user.displayName;
       db.collection('users').doc(user.uid).onSnapshot((doc) => {
-        if (doc.data().bio !== undefined) {
+        if (doc.data().bio !== '') {
           profileH5.innerHTML = doc.data().bio;
         } else {
           profileH5.innerHTML = 'Usuario de BUNKER';
         }
-        if (doc.data().cover !== undefined) {
+        if (doc.data().cover !== '') {
           coverProfile.src = doc.data().cover;
         }
       });

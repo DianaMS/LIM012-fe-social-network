@@ -42,6 +42,29 @@ export const renderPost = (doc, userId) => {
   </div>`;
   const clickComments = li.querySelector('.fa-comments');
   const inputToComment = li.querySelector('.inputComment');
+  // COMMENTS
+  const clickIconSend = li.querySelector('.icon-send');
+  const commentInputPhoto = li.querySelector('.user-comment');
+  auth.onAuthStateChanged((user) => {
+    if (user.photoURL !== null || '') {
+      commentInputPhoto.src = user.photoURL;
+    }
+    clickIconSend.addEventListener('click', () => {
+      if (inputToComment.value) {
+        const content = inputToComment.value;
+        const likes = 0;
+        const date = firebase.firestore.FieldValue.serverTimestamp();
+        const userPhoto = user.photoURL;
+        const userName = user.displayName;
+        const uid = user.uid;
+        formComment(post.id, content, likes, date, userPhoto, userName, uid)
+          .then((docPost) => {
+            inputToComment.value = '';
+            addDocumentIdToUserCollection(user.uid, docPost.id, 'comments');
+          });
+      }
+    });
+  });
   const newComments = li.querySelector('.new-comment');
   clickComments.addEventListener('click', () => {
     newComments.classList.toggle('hide');
@@ -64,28 +87,6 @@ export const renderPost = (doc, userId) => {
     db.collection('posts').doc(post.id).update({
       likes: postLikes,
     });
-  });
-  // COMMENTS
-
-  const clickIconSend = li.querySelector('.icon-send');
-  clickIconSend.addEventListener('click', () => {
-
-    auth.onAuthStateChanged((user) => {
-      if (inputToComment.value) {
-        const content = inputToComment.value;
-        const likes = 0;
-        const date = firebase.firestore.FieldValue.serverTimestamp();
-        const userPhoto = user.photoURL;
-        const userName = user.displayName;
-        const uid = user.uid;
-        formComment(post.id, content, likes, date, userPhoto, userName, uid)
-          .then((docPost) => {
-            inputToComment.value = '';
-            addDocumentIdToUserCollection(user.uid, docPost.id, 'comments');
-          });
-      }
-    });
-
   });
 
   // PERSONALIZE POSTS
@@ -114,7 +115,7 @@ export const renderPost = (doc, userId) => {
   }
   dateTag.appendChild(visibilityIcon);
   const profilePhoto = li.querySelector('.profile');
-  if (doc.userPhoto) {
+  if (doc.userPhoto !== '') {
     profilePhoto.src = doc.userPhoto;
   }
   const modalOptions = li.querySelector('.modal-options');

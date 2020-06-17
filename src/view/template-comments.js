@@ -12,7 +12,7 @@ export const renderComment = (postsComments, postId, sizeComments) => {
     const shortTime = getdate.toLocaleTimeString();
     const template = `
         <div class= "header-comment">
-            <img src=${comment.userPhoto} class="user-comment">
+            <img src="./images/profile-img-woman.png" class="user-comment">
             <div>
             <h2><b>${comment.userName}</b><br>${shortTime} ${shortDate}</h2>
             </div>
@@ -49,14 +49,12 @@ export const renderComment = (postsComments, postId, sizeComments) => {
       });
     }
 
+    const photoBeforeComment = div.querySelector('.user-comment');
+    if (comment.userPhoto !== null || '') {
+      // eslint-disable-next-line no-param-reassign
+      photoBeforeComment.src = comment.userPhoto;
+    }
     auth.onAuthStateChanged((user) => {
-      const photoBeforeComment = document.querySelectorAll('.first');
-      photoBeforeComment.forEach((ele) => {
-        if (comment.userPhoto) {
-          // eslint-disable-next-line no-param-reassign
-          ele.src = user.photoURL;
-        }
-      });
       const userId = user.uid;
       if (userId !== comment.uid) {
         optionsOfComments.style.display = 'none';

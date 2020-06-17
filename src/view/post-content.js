@@ -42,9 +42,11 @@ export default (content, postId) => {
   // SHOW PREVIEW OF SELECTED IMG
   const preview = postForm.querySelector('#preview');
   const uploadPhoto = postForm.querySelector('#upload-photo');
+  const userNameOnPtag = postForm.querySelector('#option-public p');
   // SHARE A POST
   // UPLOAD FILES
   auth.onAuthStateChanged((user) => {
+    userNameOnPtag.innerHTML = user.displayName;
     uploadPhoto.addEventListener('change', (e) => {
       const file = e.target.files[0];
       const refPath = `User:${user.uid}/${file.name}`;
