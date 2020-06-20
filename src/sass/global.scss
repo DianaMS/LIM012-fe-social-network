@@ -6,6 +6,7 @@
 //===colores light===
 
 $color-gradient : linear-gradient(180deg, #040240 0%, #2D2981 100%);
+$color-gradient2 : linear-gradient(-225deg, #AC32E4 0%, #7918F2 48%, #4801FF 100%);
 $color-1: #0F0C48;
 $color-2: rgba(20, 137, 203, 0.5);
 $color-3: grey;
@@ -16,6 +17,7 @@ $color-7: rgba(40, 40, 41, 0.8);
 $color-8: rgba(246, 229, 229, 0.19);
 $color-9: rgba(0, 0, 0, 0.8);
 $color-10: rgb(235, 229, 255);
+
 
 //===size===
 @mixin size($width, $height) {

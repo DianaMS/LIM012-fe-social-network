@@ -5,6 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 @font-face {
   font-family: 'Sifonn';
   src: url("../font/SIFONN_PRO.otf"); }
@@ -1169,6 +1170,48 @@ input[type=checkbox] {
   font-size: 12px;
   font-weight: lighter;
   color: black; }
+
+@font-face {
+  font-family: 'Sifonn';
+  src: url("../font/SIFONN_PRO.otf"); }
+
+.nf-page {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(-225deg, #AC32E4 0%, #7918F2 48%, #4801FF 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .nf-page .nf-content {
+    width: 310px;
+    height: 310px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background: #ffff;
+    border-radius: 1300px; }
+    @media (min-width: 800px) {
+      .nf-page .nf-content {
+        width: 600px;
+        height: 600px; } }
+    .nf-page .nf-content img {
+      width: 68%;
+      height: auto; }
+    .nf-page .nf-content p {
+      font-family: "Sifonn", sans-serif;
+      font-size: 25px;
+      font-weight: lighter;
+      width: 50%;
+      height: auto;
+      color: rgba(40, 40, 41, 0.8);
+      text-align: center;
+      word-wrap: break-word; }
+      @media (min-width: 800px) {
+        .nf-page .nf-content p {
+          font-family: "Sifonn", sans-serif;
+          font-size: 40px;
+          font-weight: lighter; } }
 
 * {
   outline: none; }

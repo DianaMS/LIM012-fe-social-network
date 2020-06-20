@@ -1,0 +1,33 @@
+@import "../global.scss";
+
+.nf-page {
+    @include size(100%, 100vh);
+    background-image: $color-gradient2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .nf-content {
+        @include size(310px, 310px);
+        @include flexModal(column);
+        background: $color-6;
+        border-radius: 1300px;
+        @include desktop-screen() {
+            @include size(600px, 600px);
+        }
+        img {
+            @include size(68%, auto);
+        }
+
+        p {
+            @include font-siffon(25px);
+            @include size(50%, auto);
+            color: $color-7;
+            text-align: center;
+            word-wrap: break-word;
+            @include desktop-screen() {
+                @include font-siffon(40px);
+            }
+        }
+    }
+}
