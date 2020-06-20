@@ -4,6 +4,7 @@
 import { components } from '../view/index.js';
 
 const actualView = document.getElementById('actual-view');
+
 const homeView = () => {
   actualView.appendChild(components.home());
   const lateralLeft = actualView.querySelector('.lateral-left');
@@ -72,6 +73,7 @@ export const changeView = (route, content, docId) => {
     }
     default: {
       actualView.innerHTML = '';
+      return actualView.appendChild(components.notFound());
     }
   }
 };

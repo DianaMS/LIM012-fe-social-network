@@ -7,6 +7,7 @@ import profile from './profile-view.js';
 import postform from './post-content.js';
 import editProfile from './edit-profile.js';
 import themes from './theme-options.js';
+import notFound from './404.js';
 
 const components = {
   login,
@@ -16,5 +17,6 @@ const components = {
   postform,
   editProfile,
   themes,
+  notFound,
 };
 export { components };
