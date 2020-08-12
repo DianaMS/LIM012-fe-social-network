@@ -20,14 +20,15 @@
   <div class="home-view">
     <header>
       <h1 class="h1-style"><img src="images/logo.png" alt="app logo"> BUNKER</h1>
-      <div class= "container-of-icons">
-        <a href="#/home" id= "home-btn"><i class="fas fa-home"></i></a>
+      <div class="container-of-icons">
+        <a href="#/home" id="home-btn"><i class="fas fa-home"></i></a>
         <a href="#/profile">
-          <img alt="profile photo" class="actual-user-photo pic-style comment-size">
+          <img alt="profile photo" src="images/profile-cube.png"
+            class="actual-user-photo home-pic pic-style comment-size">
         </a>
-          <button class = "options">
-        <i class="fas fa-cog "></i>
-        <i class="fas fa-bars "></i>
+        <button class="options">
+          <i class="fas fa-cog "></i>
+          <i class="fas fa-bars "></i>
         </button>
       </div>
       <nav class="menu-nav">
@@ -42,20 +43,13 @@
       <a href="#/profile"> <i class="fas fa-user"></i></a>
     </footer>
   </div>
-  <script>
-    const firebaseConfig = {
-      apiKey: 'AIzaSyB3ai9vZ3ufFEfKMlmiV8ji7h0bHQwbaX4',
-      authDomain: 'code-flex-2d963.firebaseapp.com',
-      databaseURL: 'https://code-flex-2d963.firebaseio.com',
-      projectId: 'code-flex-2d963',
-      storageBucket: 'code-flex-2d963.appspot.com',
-      messagingSenderId: '971485385914',
-      appId: '1:971485385914:web:fbf36803ea73423d9e5e83',
-    };
-  </script>
-  <script>firebase.initializeApp(firebaseConfig);</script>
   <script type="module" src="index.js"></script>
-  <div class="lds-ring loader" id="loader"><div></div><div></div><div></div><div></div></div>
+  <div class="lds-ring loader" id="loader">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 </body>
 
 </html>

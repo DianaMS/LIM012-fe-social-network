@@ -29,12 +29,11 @@ describe('logIn', () => {
 });
 
 describe('logInGoogle', () => {
-  it('Deberia poder iniciar sesión con Google', () => 
-    logInGoogle()
-      .then((data) => {
-        const provider = data.providerData[0].providerId;
-        expect(provider).toBe('google.com');
-      }));
+  it('Deberia poder iniciar sesión con Google', () => logInGoogle()
+    .then((data) => {
+      const provider = data.providerData[0].providerId;
+      expect(provider).toBe('google.com');
+    }));
 });
 
 describe('logInFacebook', () => {

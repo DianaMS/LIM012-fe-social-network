@@ -12,7 +12,6 @@ export default () => {
       window.history.back();
     }
   };
-
   const darkMode = div.querySelector('.dark-mode');
   const lightMode = div.querySelector('.light-mode');
 

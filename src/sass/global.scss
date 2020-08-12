@@ -11,6 +11,9 @@ src: url('../font/NanumGothic-Regular.ttf');
 *{
 box-sizing: border-box;
 }
+body, html {
+  min-height: 100%;
+}
 body{
   margin: 0;
   padding: 0;
@@ -30,7 +33,7 @@ body{
     background: #3c3744;
   }
 }
-input:focus, textarea:focus{
+input:focus, textarea:focus, button:focus{
   outline: none;
 }
 a{
@@ -41,8 +44,6 @@ a{
 }
 .red {
   color: rgb(236, 12, 12);
-<<<<<<< HEAD
-=======
 }
 
 .hide-overflow{
@@ -55,5 +56,4 @@ a{
 
 .center {
   text-align: center;
->>>>>>> 09aefd09e3477b49912483142e0da7f93e24c37c
 }

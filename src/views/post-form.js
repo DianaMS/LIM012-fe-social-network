@@ -13,7 +13,7 @@ export const postForm = () => {
   </div>
   <section id="switch-content">
   <div>
-    <img id="photo-edited" src=${user.photoURL} alt="profile photo" class="right-size pic-style">
+    <img id="photo-edited" src="images/profile-cube.png" alt="profile photo" class="right-size pic-style">
     <h3>${user.displayName}</h3>
   </div>
   <div id="switch-form">
@@ -33,6 +33,10 @@ export const postForm = () => {
   </section>
   `;
   div.innerHTML = template;
+  const profilePhotoForm = div.querySelector('#photo-edited');
+  if (user.photoURL) {
+    profilePhotoForm.src = user.photoURL;
+  }
   // GO BACK BUTTON
   const goBackButton = div.querySelector('.fa-arrow-left');
   goBackButton.addEventListener('click', () => {
@@ -55,7 +59,7 @@ export const postForm = () => {
     });
     preview.appendChild(img);
   });
-  // MAKE A POST
+  // MAKE A POST BUTTON
   makeAPostForm.addEventListener('submit', (e) => {
     e.preventDefault();
     preview.innerHTML = '';

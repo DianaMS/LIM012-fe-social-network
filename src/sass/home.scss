@@ -16,15 +16,15 @@ header{
   z-index: 2;
   top: 0;
   h1{
-    font-size: 24px;
+    font-size: 20px;
     img{
       margin-right: 2px;
-       @include size(30px, 30px);
+       @include size(25px, 25px);
     }
   }
   i{
     color: #ffffff;
-    font-size: 25px;
+    font-size: 19px;
   }
 }
 .container-of-icons{
@@ -38,17 +38,19 @@ header{
   }
   .fa-bars{
     @media  (min-width: 740px) and (max-width: 4000px){
-      font-size: 0;
+      display: none;
     }
   }
   #home-btn, .fa-cog, .actual-user-photo{
-    margin-right: 20px;
-    font-size: 0;
     display: none;
     @media  (min-width: 740px) and (max-width: 4000px){
       font-size: 25px;
-      display: block;
+      display: flex;
     }
+  }
+  .actual-user-photo{
+    margin: 0 20px;
+    @include size(30px, 30px)
   }
 }
 main{
@@ -64,20 +66,17 @@ main{
     body.dark & { 
       color: rgb(255, 255, 255);
     }
-    
-    // border: solid red;
     a{
       margin: 0 15px;
       @include flexModal(row);
-      @include size(70%, 44px);
+      @include size(70%, 36px);
       color: rgb(73, 73, 73);
-      border-radius: 20px;
+      border-radius: 16px;
       font-family: 'NanumGothic';
       body.dark & { 
         color: rgb(255, 255, 255);        
         border: solid 1px rgb(255, 255, 255);
       }
-      // border: solid 2px black;
       box-shadow: 0px 0px 6px -2px rgba(0,0,0,0.75);
     }
   }
@@ -92,7 +91,7 @@ footer{
   background-image: linear-gradient(180deg, #040240 0%, #2D2981 100%);;
   i{
     color: #ffffff;
-    font-size: 25px;
+    font-size: 22px;
     @media  (min-width: 740px) and (max-width: 4000px){
       font-size: 0;
     }
@@ -109,54 +108,45 @@ footer{
 .user-info{
   display: none;
   flex-direction: column;
-  @include size(92%, 18em);
-  max-width: 600px;
-  // border: solid rgb(123, 255, 0);
+  @include size(92%, auto);
+  max-width: 800px;
   .user-cover-photo-container{
+    @include size(100%, auto);
     margin-top: 8px;
-    margin-left: 0;
-    height: 12.5em;
-    // border: solid red;
+    height: 250px;
     display: flex;
     justify-content: center;
     padding: 0;
-
     label {
-      width: 30px;
+      @include flexModal(column);
+      background-color: rgba(97, 94, 94, 0.945);
+      width: 40px;
       height: 30px;
-      position: relative;
-      left: 50px;
-      align-self: flex-end;
-      bottom: 60px;
-      
+      position: absolute;
       i{
-      position: relative;
-      left: 6px;
-      top: 5px;
+        color: cornsilk;
       }
     }
-
-    
     .user-cover-photo{
-    margin-right: 15px;
     border-radius: 15px 15px 0 0;
     background-color: rgb(70, 68, 68);
-    body.dark & { 
-      background-color: #6b6c6d;
-    } 
-    @include size(100%, 10em);
-    // border: solid rgb(0, 119, 255);
+    @include size(100%, 184px);
+    max-width: 550px;
+    min-width: 339px;
+      body.dark & { 
+        background-color: #6b6c6d;
+      }
     }
     .user-profile-photo{
+      border: solid 5px rgb(255, 252, 248);
       margin: 0;
       position: absolute;
       align-self: flex-end;
-      @include size(75px, 75px);
+      @include size(140px, 140px);
     }
   }
   .username-bio{
-    // border: solid green;
-    @include size(100%, 5em);
+    @include size(100%, 60px);
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -195,58 +185,39 @@ footer{
   overflow: hidden;
   position: fixed;
   flex-direction: column;
-  @include size(180px, 100vh);
-  background-color: rgba(5, 32, 56, 0.9);
+  @include size(180px, 120px);
+  background-color: rgb(255, 255, 255);
   top: 50px;
-  right: 0px;
-  div{
-    font-family: 'NanumGothic';
-    color: white;
-    @include size(100%, 43px);
-    @include flexModal(column);
-    &:hover{
-      background-color: rgba(253, 255, 255, 0.212);
-    
-  }
-
-  }
-
-  .theme-options{
-    border-bottom: 1px solid rgb(219, 219, 219);
-    a {
-      color: white;
+  border-radius: 10px;
+  right: 0;
+  box-shadow: 0px 0px 33px -14px rgba(0,0,0,0.75);
+  font-size: 14px;
+    div{ 
+      color: #333232;
+      font-family: 'NanumGothic';
+      @include size(100%, 40px);
+      @include flexModal(column);
       &:hover{
-        background-color: rgba(253, 255, 255, 0.212);
+        background-color: rgb(229, 229, 240);
     }
-    }
-  }
-
-  div:first-child{
     a{
       @include flexModal(column);
-      color: white;
-      @include size(100%, 43px);
+      @include size(100%, 40px);
+      color: rgb(51, 50, 50);
     }
-    
-    border-bottom: 1px solid rgb(219, 219, 219);
   }
-
-
-  #log-out {
-    &:hover{
-      background-color: rgba(253, 255, 255, 0.212);
-  }
+  div:nth-last-child(2){
+    border-top: solid 1px rgb(221, 217, 217);
+    border-bottom: solid 1px rgb(221, 217, 217);
   }
 }
 // POSTS AND OPTION TO POST CONATINER
 #lateral-right{
-  // border: solid red;
   width: 100%;
   max-width: 600px;
   display: flex;
   flex-direction: column;
   #core-rail{
-    // border: solid red;
     width: 100%;
     #home-posts, #profile-posts{
     display: flex;
@@ -258,48 +229,36 @@ footer{
   }
 }
 .right-size{
-  @include size(50px, 50px);
+  @include size(40px, 40px);
 }
 .pic-style{
 border-radius: 50%;
 background-color: rgba(6, 135, 255, 0.719);
 }
 @media  (min-width: 1024px) and (max-width: 4000px){
+  .right-size{
+    @include size(50px, 50px);
+  }
   .flex-row{
     flex-direction: row;
     align-items: unset;
     justify-content: space-evenly;
   }
   .user-info{
-    height: 24em;
     display: flex;
+    align-items: center;
+    width: auto;
   .user-cover-photo-container{
+    height: 375px;
     z-index: 0;
-    label {
-      width: 30px;
-      height: 30px;
-      border-radius: 50px;
-      position: relative;
-      left: 50px;
-      align-self: flex-end;
-      bottom: 60px;
-      
-      i{
-      position: relative;
-
-      left: 6px;
-      top: 5px;
-      }
-    }
-    margin-left: 0;
-    height: 18em;
     .user-cover-photo{
-      height: 15em;
+      @include size(628px, 310px);
+      max-width: 650px;
       margin-left: 0;
       padding: 0;
     }
     .user-profile-photo{
-      @include size(98px, 98px);
+      @include size(150px, 150px);
     }
   }
 }

@@ -27,14 +27,6 @@
     background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
     @include size(100%, 32px);
 }
-
-.fa-times {
-    @include positions(absolute, 0, 5px, 0px);
-    cursor: pointer;
-    color: #ffff;
-    font-size: 20px;
-}
-
 .descripcion {
     @include margins(0px, 30px, 10px, 30px);
     @include font-NahumGothic(12px);

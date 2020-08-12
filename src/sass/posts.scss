@@ -5,8 +5,8 @@
   border-radius: 10px 0 10px 0;
   box-shadow: 0px 0px 25px -11px rgba(41,40,41,1);
   body.dark & {
-    background-color: rgb(196, 197, 250);
-    box-shadow: 0px 0px 25px -11px rgb(196, 197, 250);
+    opacity: 0.8;
+    background: white;
   }
   .header-post{
     display: flex;
@@ -15,8 +15,6 @@
     @include size(100%, 3.5em);
   img{
     margin: 0 8px;
-    width: 40px;
-    height: 40px;
   }
   .date-username{
     display: flex;
@@ -25,11 +23,10 @@
     @include size(52%, 3em);
 
     select{
-
-        @include size(60px, 20px);
+        margin: 0 2px;
+        @include size(60px, 21px);
         font-size: 12px;
         border-radius: 5px;
-        background-color: rgb(223, 236, 255);
         color: rgb(94, 93, 93);
         option {
           border: none;
@@ -55,10 +52,9 @@
     display: flex;
     justify-content: flex-end;
     flex-direction: row;
-    
     i{
-      margin: 7px 10px;
-      font-size: 22px;
+      margin: 7px 5px;
+      font-size: 16px;
       color: rgb(87, 84, 85);
     }
   }
@@ -70,15 +66,19 @@
     width: 100%;
     height: auto;
     font-size: 14px;
+    display: flex;
+    flex-direction: column;
     p{
       font-family: 'NanumGothic';
-      padding: 15px 5px 15px;
+      padding: 10px;
+      margin: 0;
       box-sizing: border-box;
       width: 100%;
       word-wrap: break-word;
     }
-    div{
-      @include size(100%, auto);
+    img{
+      width: 100%;
+      align-self: center;
     }
   }
   .footer-post{
@@ -91,15 +91,9 @@
   }
 // POST AND COMMENT MENU
   .post-menu{
-    @include size(120px, 60px);
+    @include size(120px, 50px);
     button{
      @include size(100%, 30px);
-    }
-  }
-  .comment-menu{
-    @include size(95px, 40px);
-    button{
-     @include size(100%, 20px);
     }
   }
   .style-menu{
@@ -144,7 +138,7 @@
           background: none;
           border: none;
           i{
-            font-size: 17px;
+            font-size: 16px;
           }
         }
   }
@@ -163,20 +157,14 @@
       img {
         width: 35px;
         height: 35px;
-        margin-left: 1%;
-        margin-bottom: 15px;
+        margin: 0 2px;
       }
-      p{
+      > p{
         width: 100%;
-        // background-color: sandybrown;
         font-family: 'NanumGothic';
-        font-size: 12px;
-        // margin-top: 5px;
-      }
-      >p{
         word-wrap: break-word;
         font-size: 14px;
-        padding: 0 10px 10px 10px;
+        padding: 5px;
       }
     }
     .actual-home-comment:before {
@@ -192,25 +180,27 @@
     }
   }
   .header-comment{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    @include flexModal(row);
     .date-username{
-      @include size(100%, 2.8em);
-      margin:  0 8px 0 8px;
+      margin: 0 3px;
+      @include size(100%, auto);
       .comment-userName{
         font-weight: bold;
         font-size: 12px;
       }
+      p{
+        font-family: 'NanumGothic';
+        font-size: 12px;
+        margin: 0;
+      }
     }
     .menu-container{
-      @include size(30%, 3em);
+      @include size(30%, 2.2em);
       display: flex;
       justify-content: flex-end;
       flex-direction: row;
-      
       i{
-        font-size: 18px;
+        font-size: 16px;
         color: rgb(87, 84, 85);
         position: relative;
         top: -7px;
@@ -231,6 +221,11 @@
     .date-username{
       @include size(60%, 3.5em);
     }
+    .menu-container{
+    i{
+      margin: 7px 8px;
+    }
+  }
   }
 }
 .header-comment{

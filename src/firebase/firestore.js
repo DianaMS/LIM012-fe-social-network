@@ -27,7 +27,7 @@ export const firstTimeUser = (userId, displayName, profilePhoto) => firebase.fir
         userName: displayName,
         userPhoto: profilePhoto,
         coverPhoto: '',
-        bio: '',
+        bio: 'Usuario de Bunker',
         myLikes: [],
         myPosts: [],
         myComments: [],

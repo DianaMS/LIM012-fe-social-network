@@ -21,7 +21,7 @@ export const renderPost = (userId, doc, element) => {
   </div>
 </div>
 <div class="main-post">
-  <p>${post.content}</p>
+  <p></p>
 </div>
 <div class="footer-post">
   <i class="far fa-heart"></i><span class="like-counter">${post.likes}</span>
@@ -43,6 +43,9 @@ export const renderPost = (userId, doc, element) => {
   const headerPost = div.querySelector('.header-post');
   const dateContainer = div.querySelector('.text');
   const likeIcon = div.querySelector('.fa-heart');
+  // DISPLAY POST CONTENT
+  const postContent = div.querySelector('.main-post p');
+  postContent.textContent = post.content;
   // DISPALY NAME AND PHOTO URL
   getDocument('users', post.userId, (userDoc) => {
     postUserName.innerHTML = userDoc.data().userName;

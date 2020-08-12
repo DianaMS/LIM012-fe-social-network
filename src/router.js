@@ -3,7 +3,6 @@ import { components } from './views/index.js';
 const actualView = document.getElementById('actual-view');
 const homeView = document.querySelector('.home-view');
 const mainContainer = document.querySelector('#main-container');
-const body = document.querySelector('body');
 
 export const changeView = (route) => {
   actualView.innerHTML = '';
@@ -13,12 +12,10 @@ export const changeView = (route) => {
     case '#/log-in':
     case '#/': {
       homeView.classList.remove('display-flex');
-      body.classList.remove('hide-overflow');
       return actualView.appendChild(components.login());
     }
     case '#/sign-up': {
       homeView.classList.remove('display-flex');
-      body.classList.remove('hide-overflow');
       actualView.appendChild(components.login());
       const switchModal = actualView.querySelector('#switch-modal');
       switchModal.innerHTML = '';
@@ -26,7 +23,6 @@ export const changeView = (route) => {
     }
     case '#/home': {
       mainContainer.innerHTML = '';
-      body.classList.remove('hide-overflow');
       homeView.classList.add('display-flex');
       mainContainer.appendChild(components.home());
       const mainSection = mainContainer.querySelector('.main-section-style');
@@ -36,7 +32,6 @@ export const changeView = (route) => {
     }
     case '#/profile': {
       homeView.classList.add('display-flex');
-      body.classList.remove('hide-overflow');
       mainContainer.innerHTML = '';
       mainContainer.appendChild(components.home());
       const mainSection = mainContainer.querySelector('#main-section');
@@ -50,12 +45,10 @@ export const changeView = (route) => {
     case '#/post-section': {
       homeView.classList.add('display-flex');
       mainContainer.innerHTML = '';
-      body.classList.add('hide-overflow');
       return mainContainer.appendChild(components.postForm());
     }
     case '#/profile-form': {
       homeView.classList.add('display-flex');
-      body.classList.add('hide-overflow');
       mainContainer.innerHTML = '';
       mainContainer.appendChild(components.postForm());
       const switchForm = document.querySelector('#switch-form');
@@ -64,7 +57,6 @@ export const changeView = (route) => {
     }
     case '#/theme-options': {
       actualView.innerHTML = '';
-      body.classList.add('hide-overflow');
       return actualView.appendChild(components.themes());
     }
     default:

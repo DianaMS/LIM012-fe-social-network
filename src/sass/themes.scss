@@ -1,35 +1,28 @@
 // MENU THEMES OPTIONS
 .themes-options2{
-    background-color: rgba(0, 0, 0, 0.603);
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.74);
     box-sizing: border-box;
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 100px);
     transition: 1s;
     overflow: hidden;
     @include flexModal(column);
-    top: 8vh;
-    position: absolute;
-
-    .cont {
+    top: 50px;
+    position: fixed;
+    .cont{
+        border: solid 1px rgb(253, 251, 247);
+        border-radius: 20px;
         position: absolute;
-        z-index: 2;
-        body.dark & { 
-            background-color: #b4bae0;
-          }
         @include flexModal(column);
-        @include size(100vw, 75vh);
-        @include desktop-screen(){
-            border-radius: 3vh;
-            background-color: #ffffff;
-            @include size(50vw, 75vh);
-        }
+        @include size(300px, 300px);
         button{
-            font-size: 3vh;
-            padding: 3vh;
+            margin: 10px 0;
+            font-size: 15px;
+            padding: 20px;
             border: none;
-            border-radius: 2vh;
+            border-radius: 10px;
             text-align: center;
-            margin: 2vh;
         }
         .light-mode{
             background-color: rgb(255, 245, 107);
@@ -41,6 +34,10 @@
             margin:  0 1vh;
             color:#0F0C48;
         }
-    }
-    
+    } 
+}
+@media  (min-width: 1024px) and (max-width: 4000px){
+  .themes-options2{
+    height: calc(100vh - 50px);
+  }
 }

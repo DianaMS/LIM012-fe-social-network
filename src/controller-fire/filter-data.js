@@ -23,69 +23,28 @@ export const getPosts = (userId, element, query, value) => firebase.firestore().
     });
   });
 
-export const getComments = (userId) => {
-  return firebase.firestore().collection('comments').orderBy('timestamp', 'asc').onSnapshot((commentDocuments) => {
-    firebase.firestore().collection('posts').get().then((posts) => {
-      let postsGroup;
-      if (window.location.hash === '#/home') {
-        postsGroup = posts.docs.filter(post => post.data().visibility === 'public');
-      } else if (window.location.hash === '#/profile') {
-        postsGroup = posts.docs.filter(post => post.data().userId === userId);
+export const getComments = userId => firebase.firestore().collection('comments').orderBy('timestamp', 'asc').onSnapshot((commentDocuments) => {
+  firebase.firestore().collection('posts').get().then((posts) => {
+    let postsGroup;
+    if (window.location.hash === '#/home') {
+      postsGroup = posts.docs.filter(post => post.data().visibility === 'public');
+    } else if (window.location.hash === '#/profile') {
+      postsGroup = posts.docs.filter(post => post.data().userId === userId);
+    }
+    postsGroup.forEach((post) => {
+      const commentContainer = document.getElementById(`comment-container-${post.id}`);
+      commentContainer.innerHTML = '';
+      const postContainer = document.getElementById(post.id);
+      const commentCounter = postContainer.querySelector('.comments-counter');
+      // eslint-disable-next-line max-len
+      const postComments = commentDocuments.docs.filter(change => change.data().postId === post.id);
+      if (postComments.length === 0) {
+        commentCounter.innerHTML = 0;
       }
-      postsGroup.forEach((post) => {
-        const commentContainer = document.getElementById(`comment-container-${post.id}`);
-        commentContainer.innerHTML = '';
-        const postContainer = document.getElementById(post.id);
-        const commentCounter = postContainer.querySelector('.comments-counter');
-        // eslint-disable-next-line max-len
-        const postComments = commentDocuments.docs.filter(change => change.data().postId === post.id);
-        postComments.forEach((comment) => {
-          renderComment(userId, comment, commentContainer);
-          commentCounter.innerHTML = commentContainer.childElementCount;
-        });
+      postComments.forEach((comment) => {
+        renderComment(userId, comment, commentContainer);
+        commentCounter.innerHTML = commentContainer.childElementCount;
       });
     });
   });
-};
-
-// eslint-disable-next-line max-len
-// export const getComments = userId => firebase.firestore().collection('comments').orderBy('timestamp', 'asc').onSnapshot((commentDocuments) => {
-//   const changes = commentDocuments.docChanges();
-//   // obtengo coleccion de posts
-//   firebase.firestore().collection('posts').get().then((posts) => {
-//     let postsGroup;
-//     if (window.location.hash === '#/home') {
-//     // si estoy en home filtro los posts y obtengo solo los que son publicos
-//       postsGroup = posts.docs.filter(post => post.data().visibility === 'public');
-//     } else if (window.location.hash === '#/profile') {
-//     // si estoy en mi profile filtro los posts y obtengo solo los mios
-//       postsGroup = posts.docs.filter(post => post.data().userId === userId);
-//     }
-//     // por cada post obtengo sus comentarios
-//     postsGroup.forEach((post) => {
-//       const commentContainer = document.getElementById(`comment-container-${post.id}`);
-//       const postContainer = document.getElementById(post.id);
-//       const commentCounter = postContainer.querySelector('.comments-counter');
-//       // solo me quedo con los comentarios que sean del post
-//       const postComments = changes.filter(change => change.doc.data().postId === post.id);
-//       // por cada comentario...
-//       postComments.forEach((comment) => {
-//         if (comment.type === 'added') {
-//         // si es añadido lo muestro en su contenedor
-//           renderComment(userId, comment.doc, commentContainer);
-//           commentCounter.innerHTML = commentContainer.childElementCount;
-//         } else if (comment.type === 'removed') {
-//         // si es eliminado lo elimino de su contenedor
-//           const div = document.getElementById(comment.doc.id);
-//           commentContainer.removeChild(div);
-//           commentCounter.innerHTML = commentContainer.childElementCount;
-//         } else if (comment.type === 'modified') {
-//         // si ha sido editado hallo su etiqueta y lo edito
-//           const div = document.getElementById(comment.doc.id);
-//           const contentTag = div.querySelector('.comment-p');
-//           contentTag.innerHTML = comment.doc.data().content;
-//         }
-//       });
-//     });
-//   });
-// });
+});
